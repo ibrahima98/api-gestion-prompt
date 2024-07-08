@@ -14,20 +14,20 @@ def create_admin():
     password = request.json.get('mdp')
 
     if not username or not email or not password:
-        return jsonify({"msg": "Username, email, and password are required"}), 400
+        return jsonify({"msg": "Username, email et mot de passe est requis"}), 400
 
-    hashed_password = generate_password_hash(password)
+    mdp_hache = generate_password_hash(password)
     
     db = get_db()
     cursor = db.cursor()
     try:
         cursor.execute("INSERT INTO admin (username_admin, email_admin, adresse_admin, numero_tel_admin, mdp) VALUES (%s, %s, %s, %s, %s)", 
-                       (username, email, adresse, numero_tel, hashed_password))
+                       (username, email, adresse, numero_tel, mdp_hache))
         db.commit()
     except Exception as e:
         return jsonify({"msg": str(e)}), 400
 
-    return jsonify({"msg": "Admin created successfully"}), 201
+    return jsonify({"msg": "Admin créer avec Succès"}), 201
 
 
 
@@ -37,7 +37,7 @@ def login_admin():
     password = request.json.get('mdp')
 
     if not email or not password:
-        return jsonify({"msg": "Email and password are required"}), 400
+        return jsonify({"msg": "Email et mot de passe requis"}), 400
 
     db = get_db()
     cursor = db.cursor()
@@ -45,7 +45,7 @@ def login_admin():
     admin = cursor.fetchone()
 
     if not admin:
-        return jsonify({"msg": "Bad email or password"}), 401
+        return jsonify({"msg": "Mauvais email ou mot de passe "}), 401
 
     stored_password_hash = admin[1]
 
@@ -53,4 +53,4 @@ def login_admin():
         access_token = create_access_token(identity={'id': admin[0], 'admin': True})
         return jsonify(access_token=access_token), 200
     else:
-        return jsonify({"msg": "Bad email or password"}), 401
+        return jsonify({"msg": "Mauvais email ou mot de passe "}), 401
