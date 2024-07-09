@@ -47,9 +47,9 @@ def login_admin():
     if not admin:
         return jsonify({"msg": "Mauvais email ou mot de passe "}), 401
 
-    stored_password_hash = admin[1]
+    mdp_hache_restaure = admin[1]
 
-    if check_password_hash(stored_password_hash, password):
+    if check_password_hash(mdp_hache_restaure, password):
         access_token = create_access_token(identity={'id': admin[0], 'admin': True})
         return jsonify(access_token=access_token), 200
     else:
