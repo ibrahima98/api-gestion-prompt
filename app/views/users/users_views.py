@@ -21,35 +21,11 @@ def create_new_user():
     password = donnees.get('password')
     id_groupe = donnees.get('id_groupe')
 
-    if not username or not email or not adresse or not numero_tel or not password or not id_groupe:
-        return jsonify({"msg": "Vous avez oublié un champs"}), 400
+    if not username or not email or not adresse or not password :
+        return jsonify({"msg": "Vous avez oublié un champ"}), 400
 
     mdp_hache = generate_password_hash(password)
     create_user(username, email, adresse, numero_tel, mdp_hache, user_actuel['id'], id_groupe)
 
-    return jsonify({"msg": "Utilisateur créer avec Succès"}), 201
+    return jsonify({"msg": "Utilisateur créé avec succès"}), 201
 
-
-@user_bp.route('/login_user', methods=['POST'])
-def login_user():
-    email = request.json.get('email')
-    password = request.json.get('password')
-
-    if not email or not password:
-        return jsonify({"msg": "Veuillez entrer un utilisateur et mot de passe "}), 400
-
-    db = get_db()
-    cursor = db.cursor()
-    cursor.execute("SELECT id_users, mdp_users FROM users WHERE email_users = %s", (email,))
-    user = cursor.fetchone()
-
-    if not user:
-        return jsonify({"msg": "Mauvais email ou mot de passe"}), 401
-
-    mdp_hache_restaure = user[1]
-
-    if check_password_hash(mdp_hache_restaure, password):
-        access_token = create_access_token(identity={'id': user[0], 'admin': False})
-        return jsonify(access_token=access_token), 200
-    else:
-        return jsonify({"msg": "Mauvais email ou mot de passe"}), 401   
