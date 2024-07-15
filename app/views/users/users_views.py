@@ -29,3 +29,62 @@ def create_new_user():
 
     return jsonify({"msg": "Utilisateur créé avec succès"}), 201
 
+@user_bp.route('/modifier_prompt', methods=['POST'])
+@jwt_required()
+def modifier_prompt():
+    user_actuel = get_jwt_identity()
+    data = request.get_json()
+    id_demande = data.get('id_demande')
+
+    if not id_demande:
+        return jsonify({"msg": "ID de la demande requis"}), 400
+
+    db = get_db()
+    cursor = db.cursor()
+
+    # Fetch the modification request
+    cursor.execute(
+        """
+        SELECT id_prompt, nouvelle_description, nouvelle_titre, status 
+        FROM demande_modification_prompt
+        WHERE id_demande = %s
+        """,
+        (id_demande,)
+    )
+    demande = cursor.fetchone()
+
+    if not demande:
+        return jsonify({"msg": "Demande de modification non trouvée"}), 404
+
+    id_prompt, nouvelle_description, nouvelle_titre, status_demande = demande
+
+    cursor.execute(
+        """
+        SELECT id_users FROM prompts WHERE id_prompt = %s
+        """,
+        (id_prompt,)
+    )
+    prompt = cursor.fetchone()
+
+    if prompt[0] != user_actuel['id']:
+        return jsonify({"msg": "Vous n'êtes pas autorisé à modifier ce prompt"}), 403
+
+    cursor.execute(
+        """
+        UPDATE prompts SET description = %s, titre = %s, date_modification = NOW()
+        WHERE id_prompt = %s
+        """,
+        (nouvelle_description, nouvelle_titre, id_prompt)
+    )
+
+    cursor.execute(
+        """
+        UPDATE demande_modification_prompt SET status = 'approuvée' WHERE id_demande = %s
+        """,
+        (id_demande,)
+    )
+
+    db.commit()
+    cursor.close()
+
+    return jsonify({"msg": "Prompt modifié avec succès"}), 200

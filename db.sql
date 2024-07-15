@@ -95,7 +95,7 @@ create table vente (
 	date_vente TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	CONSTRAINT FK_PROMPT_VENTE
 		FOREIGN KEY (id_prompt)
-		references prompt (id_prompt)
+		references prompts (id_prompt)
 		on delete cascade 
 		on update cascade
 );
