@@ -1,72 +1,49 @@
-1. Use Case Diagram (Diagramme de cas d’utilisation)
-Acteurs principaux :
-Utilisateur fixe :
+je veux créer une espace auto ecole dans mon site mais le formulaire d'inscription et les elements important des auto ecole voici en details un appercu 🚗🚗 AUTO ÉCOLE🚗🚗
 
-Peut rechercher des auto-écoles.
-S’inscrire pour laisser un avis (nom, prénom, numéro).
-Ajouter un avis pour une auto-école (note, commentaire).
-Auto-école :
+🚖 Coût 65000 (payable en tranches) 
+ Hors timbres ( 3 timbres de 10000 chacun)
 
-Dispose d’un tableau de bord pour :
-Voir le nombre de clics sur leur profil.
-Consulter les avis.
-Créer des annonces promotionnelles.
-Souscrire à un abonnement premium (badge référencé, avantages).
-Administrateur système :
+🚖 Durée 2 mois
 
-Modère les avis (supprimer ou approuver).
-Gère les auto-écoles (création, suppression).
-Supprime des utilisateurs.
-Gère les annonces des auto-écoles.
-Génère des rapports statistiques (clics, visites).
-Diagramme des cas d’utilisation :
+🚖 Lieu: Patte d'oie, Grand Yoff, Parcelle ou Keur Massar  (c'est le candidat qui va choisir)
 
-Utilisateur fixe :
+🚖 Option: Matin, Soir ou week-end (c'est le candidat qui va choisir) et possibilité de faire les cours de code en ligne
 
-Recherche des auto-écoles.
-Inscription pour laisser un avis.
-Ajout de commentaires et notes.
-Auto-école :
+🚖Tel: 771619000 / 789623310
+(WhatsApp)
 
-Tableau de bord (clics, avis, annonces).
-Création d’annonces (paiement).
-Souscription à un abonnement premium.
-Administrateur système :
+Ou intégrez le groupe WhatsApp lien du groupe 👉🏽👉🏽https://chat.whatsapp.com/KKQYukv6RH54KOHjq9DJSN
 
-Supervision des auto-écoles.
-Gestion des utilisateurs et des avis.
-Génération de rapports.
-2. Diagramme de classes
-Classes principales avec les nouvelles fonctionnalités :
 
-Utilisateur
+ 
+Dossiers à fournir pour les examens
 
-id : Identifiant unique.
-nom, prenom, numero : Informations pour laisser un avis.
-Relations : Peut donner des Avis.
-AutoEcole
+👉 4 Photos d’identité de face 
 
-id : Identifiant unique.
-nom, localisation, tarifs, etc.
-clics : Nombre de clics sur le profil.
-premium : Statut premium (true/false).
-Relations : Reçoit plusieurs Avis et crée plusieurs Annonces.
-Avis
+👉 1 Photocopie CIN légalisée pour les Sénégalais ou Passeport légalisé et carte consulaire légalisée pour les étrangers;
 
-id : Identifiant unique.
-note : Note donnée.
-commentaire : Texte de l’avis.
-date : Date de publication.
-utilisateur_id : Référence à l’utilisateur.
-auto_ecole_id : Référence à l’auto-école.
-Annonce
+👉 1 Certificat de résidence 
 
-id : Identifiant unique.
-titre : Titre de l’annonce.
-contenu : Description de l’annonce.
-date_debut, date_fin : Période de validité.
-auto_ecole_id : Référence à l’auto-école.
-Administrateur
+- 1 Certificat médical pour auto-école 
 
-Gestion des auto-écoles, utilisateurs, et avis.
-Génération de rapports.
+👉 1 Groupe sanguin 
+
+👉 Timbre fiscal de 10 000 F
+ (le 1er timbre)
+
+-Examen conduite :
+
+Une semaine après la réussite au examen codes 
+
+1 Timbre d’enrôlement  (10 000 F + CIN au Service des mines après Pont Hanne ou au CICES à Foire)
+(2em timbre)
+
+- Timbre Retrait Permis 
+10000f à la récupération du permis (3em timbre)
+
+NB1: 
+🚗 Pour le Poids lourd c'est 100000f pour une durée de 3 mois  et 3 timbres
+Âge minimum : 22 ans
+
+🚗 Pour le Permis Transport c'est 100000f pour une durée de 3 mois  et 3 timbres
+Âge minimum : 24 ans et il faut obligatoirement un permis léger ou lourd depuis plus d'un an.
